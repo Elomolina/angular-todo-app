@@ -8,13 +8,19 @@
             <th>Acciones</th>
         </thead>
         <tbody>
-            <tr>
-                <td>a</td>
-                <td>b</td>
-                <td>c</td>
-                <td>d</td>
-                <td>e</td>
+            <tr *ngFor="let e of emp">
+                <td>{{e.id}}</td>
+                <td>{{e.nombre}}</td>
+                <td>
+                    <input type="number" name="edad" id="edad" value="{{e.edad}}" (input)="cambiarEdad($event, e.id)">
+                </td>
+                <td>{{e.cargo}}</td>
+                <td class="botones">
+                    <button id="editar">Editar</button>
+                    <button id="eliminar" (click)="cambiarEdad($event, e.id)">Eliminar</button>
+                    <button id="estatus">Cambiar estatus</button>
+                </td>
             </tr>
         </tbody>
-    </table>    
+    </table>   
 </section>

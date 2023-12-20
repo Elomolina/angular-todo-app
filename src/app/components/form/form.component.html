@@ -28,7 +28,7 @@
             <label for="cargo">Cargo: </label>
             <select name="cargo" id="cargo" formControlName="Cargo">
                 <option value="" disabled></option>
-                <option value="cargo" *ngFor="let c of catalog">{{c.descripcion}}</option>
+                <option value="{{c.descripcion}}" *ngFor="let c of catalog">{{c.descripcion}}</option>
             </select>
             <h5 *ngIf="empleadosForm.controls.Cargo.errors?.['required']">
                 Ingrese cargo

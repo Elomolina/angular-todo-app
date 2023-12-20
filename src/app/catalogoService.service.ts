@@ -21,6 +21,9 @@ export class catalogoService
         }
     ]
 }
+@Injectable({
+    providedIn: 'root',
+  })
 export class Empleados 
 {
     empleado:Empleado[] = [];
@@ -28,9 +31,14 @@ export class Empleados
     {
         return this.empleado;
     }
+    eliminarPorId(id:number):void 
+    {
+      this.empleado = this.empleado.filter(p => p.id !== id);
+    }
 }
 export class Empleado 
 {
+    private static contador:number = 0;
     id:number = 0;
     nombre:string = '';
     fechaNac:string = '';
@@ -39,6 +47,8 @@ export class Empleado
     estatus:boolean = true;
     constructor(nombre:string, fechaNac:string, edad:number, cargo:string)
     {
+        this.id = Empleado.contador;
+        Empleado.contador++;
         this.nombre = nombre; 
         this.fechaNac = fechaNac; 
         this.edad = edad;
