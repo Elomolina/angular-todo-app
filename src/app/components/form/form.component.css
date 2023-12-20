@@ -55,3 +55,15 @@ button:enabled:hover
     transition: 0.5s;
     transform: scale(1.05);
 }
+@media(max-width:600px)
+{
+    section 
+    {
+        flex-direction: column;
+        width: 90%;
+    }
+    div, input, select 
+    {
+        width: 90%;
+    }
+}

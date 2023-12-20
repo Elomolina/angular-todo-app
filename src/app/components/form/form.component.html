@@ -27,23 +27,15 @@
         <div>
             <label for="cargo">Cargo: </label>
             <select name="cargo" id="cargo" formControlName="Cargo">
-                <option value="a">a</option>
+                <option value="" disabled></option>
+                <option value="cargo" *ngFor="let c of catalog">{{c.descripcion}}</option>
             </select>
             <h5 *ngIf="empleadosForm.controls.Cargo.errors?.['required']">
                 Ingrese cargo
-            </h5>
-        </div>
-        <div>
-            <label for="estatus">Estatus</label>
-            <select name="estatus" id="estatus" formControlName="Estatus">
-                <option value="a" selected>activo</option>
-                <option value="b">inactivo</option>
-            </select>
-            <h5 *ngIf="empleadosForm.controls.Estatus.errors?.['required']">
-                Ingrese el estatus del empleado
             </h5>
         </div>
     </section>
     <button type="submit" [disabled]="!empleadosForm.valid">Agregar empleado</button>
   </form>
 <hr>
+<app-tabla></app-tabla>
