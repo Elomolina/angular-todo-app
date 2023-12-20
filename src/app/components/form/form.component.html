@@ -1,0 +1,49 @@
+<hr>
+<form [formGroup]="empleadosForm" (ngSubmit)="onSubmit()">
+    <section>
+        <div>
+            <label for="nombre">Nombre completo: </label>
+            <input id="nombre" type="text" formControlName="Nombre" />
+            <h5 *ngIf="empleadosForm.controls.Nombre.errors?.['required']">
+              Ingrese nombre completo
+            </h5>
+        </div>
+        <div>
+            <label for="fecha">Fecha de nacimiento: </label>
+            <input id="fecha" type="date" formControlName="FechaNac" />
+            <h5 *ngIf="empleadosForm.controls.FechaNac.errors?.['required']">
+              Ingrese fecha de nacimiento
+            </h5>
+        </div>
+        <div>
+            <label for="edad">Edad: </label>
+            <input id="edad" type="number" formControlName="Edad" />
+            <h5 *ngIf="empleadosForm.controls.Edad.errors?.['required']">
+                Ingrese edad
+            </h5>
+        </div>
+    </section>
+    <section>
+        <div>
+            <label for="cargo">Cargo: </label>
+            <select name="cargo" id="cargo" formControlName="Cargo">
+                <option value="a">a</option>
+            </select>
+            <h5 *ngIf="empleadosForm.controls.Cargo.errors?.['required']">
+                Ingrese cargo
+            </h5>
+        </div>
+        <div>
+            <label for="estatus">Estatus</label>
+            <select name="estatus" id="estatus" formControlName="Estatus">
+                <option value="a" selected>activo</option>
+                <option value="b">inactivo</option>
+            </select>
+            <h5 *ngIf="empleadosForm.controls.Estatus.errors?.['required']">
+                Ingrese el estatus del empleado
+            </h5>
+        </div>
+    </section>
+    <button type="submit" [disabled]="!empleadosForm.valid">Agregar empleado</button>
+  </form>
+<hr>

@@ -1,0 +1,57 @@
+form 
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1em;
+}
+section 
+{
+    margin: 1em;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+h5 
+{
+    margin: 0.5em;
+}
+div 
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+}
+h5 
+{
+    color: rgb(201, 4, 4);
+}
+select, input
+{
+    width: 200px;
+    height: 25px;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+button 
+{
+    width: 200px;
+    font-weight: bold;
+    padding: 0.5em;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 10px;
+    border: transparent;
+}
+button:enabled
+{
+    background-color: black;
+    color: white;
+
+}
+button:enabled:hover 
+{
+    transition: 0.5s;
+    transform: scale(1.05);
+}
