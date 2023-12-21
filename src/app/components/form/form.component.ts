@@ -7,7 +7,7 @@ import { TablaComponent } from '../tabla/tabla.component';
 @Component({
   selector: 'app-form',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, TablaComponent],
+  imports: [ReactiveFormsModule, CommonModule, TablaComponent, FormComponent],
   templateUrl: './form.component.html',
   styleUrl: './form.component.css'
 })

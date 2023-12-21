@@ -10,7 +10,7 @@
     transition: 0.3s;
     transform: scale(1.05);
 }
-div 
+.form 
 {
     display: flex;
     flex-direction: column;
