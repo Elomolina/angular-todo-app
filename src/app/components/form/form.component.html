@@ -3,21 +3,21 @@
     <section>
         <div>
             <label for="nombre">Nombre completo: </label>
-            <input id="nombre" type="text" formControlName="Nombre" />
+            <input id="nombre" type="text" formControlName="Nombre" [(ngModel)]="empleado.nombre"/>
             <h5 *ngIf="empleadosForm.controls.Nombre.errors?.['required']">
               Ingrese nombre completo
             </h5>
         </div>
         <div>
             <label for="fecha">Fecha de nacimiento: </label>
-            <input id="fecha" type="date" formControlName="FechaNac" />
+            <input id="fecha" type="date" formControlName="FechaNac" [(ngModel)]="empleado.fechaNac"/>
             <h5 *ngIf="empleadosForm.controls.FechaNac.errors?.['required']">
               Ingrese fecha de nacimiento
             </h5>
         </div>
     </section>
     <section>
-        <div>
+        <div *ngIf="!editCatalog; else editForm">
             <label for="cargo">Cargo: </label>
             <select name="cargo" id="cargo" formControlName="Cargo">
                 <option value="" disabled></option>
@@ -27,8 +27,19 @@
                 Ingrese cargo
             </h5>
         </div>
+        <ng-template #editForm>
+            <div>
+                <label for="cargo">Cargo: </label>
+                <select name="cargo" id="cargo" formControlName="Cargo" [(ngModel)]="empleado.cargo">
+                    <option selected value="{{empleado.cargo}}">{{empleado.cargo}}</option>
+                    <option *ngFor="let c of categorias">{{c.descripcion}}</option>
+                </select>
+                <h5 *ngIf="empleadosForm.controls.Cargo.errors?.['required']">
+                    Ingrese cargo
+                </h5>
+            </div>
+        </ng-template>
     </section>
-    <button type="submit" [disabled]="!empleadosForm.valid">Agregar empleado</button>
+    <button type="submit" [disabled]="!empleadosForm.valid">{{agregar}}</button>
   </form>
 <hr>
-<app-tabla></app-tabla>

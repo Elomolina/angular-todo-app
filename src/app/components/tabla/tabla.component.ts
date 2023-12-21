@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
 import { Empleado, Empleados} from '../../catalogoService.service';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { ModalEstatusComponent } from '../modal-estatus/modal-estatus.component';
 import { ModalEditComponent } from '../modal-edit/modal-edit.component';
+import { FormComponent } from '../form/form.component';
 @Component({
   selector: 'app-tabla',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink, RouterOutlet, ModalEstatusComponent, ModalEditComponent],
+  imports: [FormComponent, CommonModule, FormsModule, RouterLink, RouterOutlet, ModalEstatusComponent, ModalEditComponent],
   templateUrl: './tabla.component.html',
   styleUrl: './tabla.component.css'
 })
