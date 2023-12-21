@@ -4,7 +4,7 @@ import { FormComponent } from './components/form/form.component';
 export const routes: Routes = [
     {
         path:'agregarEmpleados',
-        component: FormComponent
+        component: FormComponent,
     },
     {
         path:'**',

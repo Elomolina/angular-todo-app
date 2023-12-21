@@ -18,7 +18,6 @@ export class FormComponent
   empleadosForm = new FormGroup({
     Nombre: new FormControl("", Validators.required),
     FechaNac : new FormControl("", Validators.required),
-    Edad: new FormControl("", Validators.required),
     Cargo: new FormControl("", Validators.required),
   });
   onSubmit()
@@ -26,7 +25,8 @@ export class FormComponent
     if(this.empleadosForm.valid)
     {
       const formData = this.empleadosForm.value;
-      let empleado:Empleado = new Empleado(String(formData.Nombre),String(formData.FechaNac), parseInt(String(formData.Edad)), String(formData.Cargo));
+      let empleado:Empleado = new Empleado(String(formData.Nombre),String(formData.FechaNac), String(formData.Cargo));
+      empleado.calcularEdad();
       this.emp.empleado.push(empleado);
       alert("empleado agregado");
       this.empleadosForm.reset();

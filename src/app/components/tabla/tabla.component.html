@@ -16,11 +16,16 @@
                 </td>
                 <td>{{e.cargo}}</td>
                 <td class="botones">
-                    <button id="editar">Editar</button>
-                    <button id="eliminar" (click)="cambiarEdad($event, e.id)">Eliminar</button>
-                    <button id="estatus">Cambiar estatus</button>
+                    <span>
+                        <app-modal [estilo]="'editar'" [modalButton]="'Editar'" [modalTitulo]="titulo1"  [data]="child1Data"></app-modal>
+                    </span>
+                    <button id="eliminar" (click)="eliminar(e.id)">Eliminar</button>
+                    <span>
+                        <app-modal [estilo]="'status'" [modalButton]="'Cambiar estatus'" [modalTitulo]="titulo2"  [data]="child2Data"></app-modal>
+                    </span>
                 </td>
             </tr>
         </tbody>
     </table>   
 </section>
+

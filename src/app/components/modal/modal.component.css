@@ -1,0 +1,14 @@
+button
+{
+    padding: 1em;
+}
+.editar 
+{
+    border: 2px solid rgb(45, 158, 45);
+    background-color: rgb(45, 158, 45);
+}
+.status 
+{
+    border: 2px solid rgb(142, 36, 142);
+    background-color: rgb(142, 36, 142);
+}
