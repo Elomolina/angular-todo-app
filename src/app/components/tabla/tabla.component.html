@@ -16,13 +16,9 @@
                 </td>
                 <td>{{e.cargo}}</td>
                 <td class="botones">
-                    <span>
-                        <app-modal [estilo]="'editar'" [modalButton]="'Editar'" [modalTitulo]="titulo1"  [data]="child1Data"></app-modal>
-                    </span>
+                    <button id="editar">editar</button>
                     <button id="eliminar" (click)="eliminar(e.id)">Eliminar</button>
-                    <span>
-                        <app-modal [estilo]="'status'" [modalButton]="'Cambiar estatus'" [modalTitulo]="titulo2"  [data]="child2Data"></app-modal>
-                    </span>
+                    <app-modal-estatus [info]="e"></app-modal-estatus>
                 </td>
             </tr>
         </tbody>

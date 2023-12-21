@@ -1,0 +1,12 @@
+.estatus 
+{
+    padding: 0.8em;
+    background-color: rgb(143, 29, 143);
+    border: 2px solid rgb(143, 29, 143);
+    color: white;
+}
+.estatus:hover 
+{
+    transition: 0.3s;
+    transform: scale(1.05);
+}
