@@ -1,0 +1,28 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary edit" data-bs-toggle="modal" [attr.data-bs-target]="'#modalEdit' + info.id" (click)="categoria()">
+    Editar
+</button>      
+<!-- Modal -->
+<div class="modal fade" id="modalEdit{{info.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">
+            Editar información de {{info.nombre}}
+        </h1>
+        </div>
+        <div class="modal-body">
+            <form>
+                <input type="text" placeholder="Nombre" [value]="info.nombre">
+                <input type="date" name="date" id="date" [value]="info.fechaNac">
+                <select name="cargo" id="cargo" formControlName="Cargo">
+                    <option selected>{{info.cargo}}</option>
+                    <option *ngFor="let c of categorias">{{c.descripcion}}</option>
+                </select>
+                <button type="submit">Editar info</button>
+            </form>
+        </div>
+    </div>
+    </div>
+</div>
+    

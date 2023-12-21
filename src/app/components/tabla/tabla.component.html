@@ -16,7 +16,7 @@
                 </td>
                 <td>{{e.cargo}}</td>
                 <td class="botones">
-                    <button id="editar">editar</button>
+                    <app-modal-edit [info]="e"></app-modal-edit>
                     <button id="eliminar" (click)="eliminar(e.id)">Eliminar</button>
                     <app-modal-estatus [info]="e"></app-modal-estatus>
                 </td>

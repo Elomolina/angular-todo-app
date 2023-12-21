@@ -23,12 +23,9 @@ export class ModalEstatusComponent
       throw new Error('Function not implemented.');
     }
   }; 
+  empleado: Empleado = this.info;
   estatus()
   {
-    console.log("pruebita");
-    
-    console.log(this.info.nombre);
-    
     if(this.info.estatus)
     {
       this.est = "activo";
@@ -39,7 +36,7 @@ export class ModalEstatusComponent
     }
   }
   cambiarEstatus()
-  {
+  {    
     for(let e of this.empleados.empleado)
     {
       if(e.id === this.info.id)
