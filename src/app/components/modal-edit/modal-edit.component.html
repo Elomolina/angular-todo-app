@@ -1,9 +1,8 @@
-<button type="button" class="btn btn-primary edit" data-bs-toggle="modal"
-    [attr.data-bs-target]="'#modalEdit' + info.id" (click)="categoria()">
+<button type="button" class="btn btn-primary edit" data-bs-toggle="modal" [attr.data-bs-target]="'#modalEdit' + info.id"
+    (click)="categoria()">
     Editar
 </button>
-<div class="modal fade" id="modalEdit{{info.id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+<div class="modal fade" id="modalEdit{{info.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -13,7 +12,8 @@
             </div>
             <div class="modal-body">
                 <div *ngIf="info.estatus; else estatusInactivo">
-                    <app-form [agregar]="'Editar empleado'" [editar]="true" [empleado]="info" [editCatalog]="true" [categorias]=categorias></app-form>
+                    <app-form [agregar]="'Editar empleado'" [editar]="true" [empleado]="info" [editCatalog]="true"
+                        [categorias]=categorias></app-form>
                 </div>
                 <ng-template #estatusInactivo>
                     <h4>El estatus de {{info.nombre}} es inactivo cambia el estatus para editar su información</h4>

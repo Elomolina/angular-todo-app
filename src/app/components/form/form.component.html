@@ -3,16 +3,16 @@
     <section>
         <div>
             <label for="nombre">Nombre completo: </label>
-            <input id="nombre" type="text" formControlName="Nombre" [(ngModel)]="empleado.nombre"/>
+            <input id="nombre" type="text" formControlName="Nombre" [(ngModel)]="empleado.nombre" />
             <h5 *ngIf="empleadosForm.controls.Nombre.errors?.['required']">
-              Ingrese nombre completo
+                Ingrese nombre completo
             </h5>
         </div>
         <div>
             <label for="fecha">Fecha de nacimiento: </label>
-            <input id="fecha" type="date" formControlName="FechaNac" [(ngModel)]="empleado.fechaNac"/>
+            <input id="fecha" type="date" formControlName="FechaNac" [(ngModel)]="empleado.fechaNac" />
             <h5 *ngIf="empleadosForm.controls.FechaNac.errors?.['required']">
-              Ingrese fecha de nacimiento
+                Ingrese fecha de nacimiento
             </h5>
         </div>
     </section>
@@ -41,5 +41,5 @@
         </ng-template>
     </section>
     <button type="submit" [disabled]="!empleadosForm.valid">{{agregar}}</button>
-  </form>
+</form>
 <hr>
