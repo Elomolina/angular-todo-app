@@ -61,7 +61,7 @@ export class Empleados
                 "pageSize": size
             },
             "totalPages": Math.round(this.empleado.length/size),
-            "totalElements": this.empleado.length,
+            "totalElements": emp.length,
         }; 
     }
     insertarEmpleado(emp:Empleado)

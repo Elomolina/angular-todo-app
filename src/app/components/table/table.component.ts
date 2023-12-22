@@ -42,7 +42,6 @@ export class TableComponent
         edad = parseInt((event.target as HTMLInputElement).value);
         this.empleados.modificarEdad(id, edad)
         this.emp = this.empleados.empleado;
-        console.log(this.empleados.empleado);
     }
     eliminar(id: number) {
         this.empleados.eliminarPorId(id);
@@ -50,6 +49,7 @@ export class TableComponent
     search()
     {
         this.actualizarDS();
+        this.pageIndex = 0;
     }
     cambiosPaginacion(event:any)
     {

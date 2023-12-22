@@ -1,5 +1,5 @@
 section 
-{
+{   
   display: flex;
   justify-content: center;
 }
@@ -76,8 +76,9 @@ a
     display: flex;
     justify-content: center;
 }
-searchBarInput 
+.searchBarInput 
 {
+    font-family: 'Poppins', sans-serif;
     width: 300px;
     text-align: center;
     padding: 0.5em;

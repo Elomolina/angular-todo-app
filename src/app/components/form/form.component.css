@@ -4,6 +4,7 @@ form
     flex-direction: column;
     align-items: center;
     margin: 1em;
+    font-family: 'Poppins', sans-serif;
 }
 section 
 {
@@ -34,7 +35,7 @@ h5
 select, input
 {
     width: 70%;
-    height: 30px;
+    height: 35px;
     border-radius: 10px;
     border: 2px solid black;
 }
