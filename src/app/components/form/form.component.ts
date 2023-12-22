@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Empleado, Empleados, catalogoService, clickEdit } from '../../catalogoService.service';
-import { TablaComponent } from '../tabla/tabla.component';
 import { Subscription } from 'rxjs';
 
 @Component({

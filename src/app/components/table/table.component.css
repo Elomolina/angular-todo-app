@@ -9,7 +9,7 @@ div
 }
 table, tr, th, td
 {
-    border: 2px solid black;
+    border: 2px solid grey;
     padding: 1em;
 }
 table 
@@ -69,4 +69,10 @@ a
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.searchbar 
+{
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
