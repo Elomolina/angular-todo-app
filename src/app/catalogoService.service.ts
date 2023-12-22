@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { Subject } from "rxjs";
 
 @Injectable({
     providedIn: 'root',
@@ -26,10 +27,17 @@ export class catalogoService
   })
 export class Empleados 
 {
+    cambios = new Subject<void>();
+    obs = this.cambios.asObservable();
     empleado: Empleado[] = [];
     getEmpleado():Empleado[]
     {
         return this.empleado;
+    }
+    insertarEmpleado(emp:Empleado)
+    {
+        this.empleado.push(emp);
+        this.cambios.next();
     }
     eliminarPorId(id:number):void 
     {

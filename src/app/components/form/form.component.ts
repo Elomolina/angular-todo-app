@@ -47,7 +47,7 @@ export class FormComponent
         const formData = this.empleadosForm.value;
         let empleado:Empleado = new Empleado(String(formData.Nombre),String(formData.FechaNac), String(formData.Cargo));
         empleado.calcularEdad();
-        this.emp.empleado.push(empleado);
+        this.emp.insertarEmpleado(empleado);
         alert("empleado agregado");
         this.empleadosForm.reset();
       }

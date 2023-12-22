@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {MatTableModule} from '@angular/material/table';
 import { Empleados, Empleado } from '../../catalogoService.service';
-
+import { Subscription } from 'rxjs';
 export interface PeriodicElement {
   name: string;
   position: number;
@@ -33,13 +33,22 @@ let aa:{}[] = [
 })
 export class TableComponent 
 {
+  dataSource:Empleado[] = [];
+  subs:Subscription = new Subscription();
   constructor(private empleados:Empleados){}
   displayedColumns: string[] = ['id', 'nombre', 'edad', 'cargo', 'acciones'];
   emp:Empleado[] = this.empleados.empleado;
-  dataSource = this.emp;
-  a()
+  ngOnInit()
   {
-    console.log(this.emp);
-    
+    this.subs = this.empleados.obs.subscribe(
+      () => {this.actualizarDS()}
+      );
   }
+  actualizarDS()
+  {
+    console.log("p");
+    
+    this.dataSource = this.empleados.empleado;
+    console.log(this.dataSource);
+  } 
 }
