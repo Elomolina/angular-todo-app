@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
-import { Empleado, Empleados, catalogoService } from '../../catalogoService.service';
+import { Empleado, Empleados, catalogoService, clickEdit } from '../../catalogoService.service';
 import { TablaComponent } from '../tabla/tabla.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-form',
@@ -13,6 +14,7 @@ import { TablaComponent } from '../tabla/tabla.component';
 })
 export class FormComponent 
 {
+  subscription:Subscription = new Subscription();
   @Input() agregar:string = '';
   @Input() editar:boolean = true;
   @Input() nombre:string = '';
@@ -32,12 +34,12 @@ export class FormComponent
   catalog: { id: number; descripcion: string; }[] = this.catalogo.cargos;
   
   empleadosForm = new FormGroup({
-    Nombre: new FormControl("", Validators.required),
+    Nombre: new FormControl(this.empleado.nombre, Validators.required),
     FechaNac : new FormControl("", Validators.required),
     Cargo: new FormControl("", Validators.required)
   });
   
-  constructor(private catalogo: catalogoService, private emp: Empleados){}
+  constructor(private catalogo: catalogoService, private emp: Empleados, private clickEdit:clickEdit){}
   onSubmit()
   {
     if(this.empleadosForm.valid)
@@ -66,5 +68,18 @@ export class FormComponent
         }        
       }
     }
+  }
+  ngOnInit()
+  {
+    this.subscription = this.clickEdit.obs.subscribe(
+      () => {this.sentData()}
+    );
+  }
+  sentData()
+  {
+    this.empleadosForm.get('Nombre')?.setValue(this.empleado.nombre);
+    this.empleadosForm.get('FechaNac')?.setValue(this.empleado.fechaNac);
+    this.empleadosForm.get('Cargo')?.setValue(this.empleado.cargo);
+    
   }
 }

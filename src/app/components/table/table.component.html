@@ -14,7 +14,9 @@
 
       <ng-container matColumnDef="edad">
         <th mat-header-cell *matHeaderCellDef> Edad </th>
-        <td mat-cell *matCellDef="let element"> {{element.edad}} </td>
+        <td mat-cell *matCellDef="let element">
+          <input type="number" name="edad" id="edad" [value]="element.edad" (input)="cambiarEdad($event, element.id)">
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="cargo">
@@ -24,7 +26,11 @@
 
       <ng-container matColumnDef="acciones">
         <th mat-header-cell *matHeaderCellDef> Acciones </th>
-        <td mat-cell *matCellDef="let element">{{element.acciones}} </td>
+        <td mat-cell *matCellDef="let element">
+          <app-modal-edit [info]="element"></app-modal-edit>
+          <button id="eliminar" (click)="eliminar(element.id)">Eliminar</button>
+          <app-modal-estatus [info]="element"></app-modal-estatus>
+        </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -32,3 +38,10 @@
     </table>
   </div>
 </section>
+<mat-paginator [length]="length"
+              [pageSize]="pageSize"
+              [pageSizeOptions]="pageSizeOptions"
+              [pageIndex] = "pageIndex"
+              (page)="cambiosPaginacion($event)"
+              aria-label="Select page">
+</mat-paginator>

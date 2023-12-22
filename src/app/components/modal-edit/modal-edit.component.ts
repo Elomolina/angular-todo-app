@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Empleado, catalogoService } from '../../catalogoService.service';
+import { Empleado, catalogoService, clickEdit } from '../../catalogoService.service';
 import { CommonModule } from '@angular/common';
 import { FormComponent } from '../form/form.component';
 
@@ -12,7 +12,7 @@ import { FormComponent } from '../form/form.component';
 })
 export class ModalEditComponent 
 {
-  constructor(private catalogo: catalogoService){}
+  constructor(private catalogo: catalogoService, private clickEdit:clickEdit){}
   @Input() info:Empleado = {
     id: 0,
     nombre: '',
@@ -27,6 +27,7 @@ export class ModalEditComponent
   categorias:{ id: number; descripcion: string; }[] = this.catalogo.cargos;
   categoria()
   {
+    this.clickEdit.enviarMensaje();
     this.categorias = this.catalogo.cargos;
     this.categorias = this.categorias.filter(c => c.descripcion !== this.info.cargo)
   }

@@ -3,14 +3,14 @@
     <section>
         <div>
             <label for="nombre">Nombre completo: </label>
-            <input id="nombre" type="text" formControlName="Nombre" [(ngModel)]="empleado.nombre" />
+            <input id="nombre" type="text" formControlName="Nombre"/>
             <h5 *ngIf="empleadosForm.controls.Nombre.errors?.['required']">
                 Ingrese nombre completo
             </h5>
         </div>
         <div>
             <label for="fecha">Fecha de nacimiento: </label>
-            <input id="fecha" type="date" formControlName="FechaNac" [(ngModel)]="empleado.fechaNac" />
+            <input id="fecha" type="date" formControlName="FechaNac"/>
             <h5 *ngIf="empleadosForm.controls.FechaNac.errors?.['required']">
                 Ingrese fecha de nacimiento
             </h5>
@@ -30,7 +30,7 @@
         <ng-template #editForm>
             <div>
                 <label for="cargo">Cargo: </label>
-                <select name="cargo" id="cargo" formControlName="Cargo" [(ngModel)]="empleado.cargo">
+                <select name="cargo" id="cargo" formControlName="Cargo">
                     <option selected value="{{empleado.cargo}}">{{empleado.cargo}}</option>
                     <option *ngFor="let c of categorias">{{c.descripcion}}</option>
                 </select>
@@ -40,6 +40,6 @@
             </div>
         </ng-template>
     </section>
-    <button type="submit" [disabled]="!empleadosForm.valid">{{agregar}}</button>
+    <button type="submit" [disabled]="!empleadosForm.valid" [attr.data-bs-dismiss]="editar ? 'modal' : null">{{agregar}}</button>
 </form>
 <hr>

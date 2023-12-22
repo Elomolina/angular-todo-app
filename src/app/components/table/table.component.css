@@ -7,3 +7,60 @@ div
 {
   width: 90%;
 }
+table, tr, th, td
+{
+    border: 2px solid black;
+    padding: 1em;
+}
+table 
+{
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 2em;
+    width: 80%;
+    border-collapse: collapse;
+}
+section 
+{
+    display: flex;
+    justify-content: center;
+}
+#edad 
+{
+    width: 90%;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    text-align: center;
+    font-weight: bold;
+}
+td button 
+{
+    font-family: 'Poppins', sans-serif;
+    margin: 1em;
+    padding: 1em;
+    color: white;
+    border: transparent;
+    border-radius: 10px;
+}
+td button:hover 
+{
+    transition: 0.5s;
+    transform: scale(1.05);
+}
+#editar 
+{
+    background-color: rgb(52, 181, 138);
+}
+#eliminar 
+{
+    background-color: rgb(183, 87, 87);
+}
+#estatus 
+{
+    background-color: rgb(128, 128, 193);
+}
+a 
+{
+    text-decoration: none;
+    color: white;
+}

@@ -23,6 +23,19 @@ export class catalogoService
     ]
 }
 @Injectable({
+    providedIn:'root'
+})
+export class clickEdit 
+{
+    editClicked = new Subject<void>();
+    obs = this.editClicked.asObservable();
+    enviarMensaje()
+    {
+        this.editClicked.next();
+    }
+}
+
+@Injectable({
     providedIn: 'root',
   })
 export class Empleados 
@@ -30,9 +43,35 @@ export class Empleados
     cambios = new Subject<void>();
     obs = this.cambios.asObservable();
     empleado: Empleado[] = [];
-    getEmpleado():Empleado[]
+    getEmpleado(page:number, size:number):{
+        content: Empleado[], 
+        pageable: any,
+        totalPages: number,
+        totalElements: number,
+        last: boolean, 
+        number: number
+    }
     {
-        return this.empleado;
+        let emp:Empleado[] = this.empleado.slice(page*size, page*size+size);
+        return {
+            "content": emp,
+            "pageable": {
+                "sort":{
+                    "empty":false,
+                    "sorted": true, 
+                    "unsorted": false
+                },
+                "offset": 0,
+                "pageNumber": page,
+                "pageSize": size,
+                "paged": true,
+                "unpaged": false
+            },
+            "totalPages": Math.round(this.empleado.length/size),
+            "totalElements": this.empleado.length,
+            "last": true,
+            "number": 0,
+        };
     }
     insertarEmpleado(emp:Empleado)
     {
@@ -42,6 +81,7 @@ export class Empleados
     eliminarPorId(id:number):void 
     {
       this.empleado = this.empleado.filter(p => p.id !== id);
+      this.cambios.next();
     }
     modificarEdad(id:number, edad:number)
     {
