@@ -10,3 +10,8 @@
     transition: 0.3s;
     transform: scale(1.05);
 }
+.modal-body 
+{
+    display: flex;
+    justify-content: center;
+}

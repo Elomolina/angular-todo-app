@@ -64,3 +64,9 @@ a
     text-decoration: none;
     color: white;
 }
+.botones 
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -19,7 +19,6 @@ export class TableComponent {
     displayedColumns: string[] = ['id', 'nombre', 'edad', 'cargo', 'acciones'];
     emp: Empleado[] = this.empleados.empleado;
     dataSource = new MatTableDataSource<Empleado>(this.emp);
-    //datos de la paginacion
     pageSizeOptions:number[] = [5, 10, 15, 20];
     length:number = this.empleados.empleado.length;
     pageSize:number= 5;
@@ -33,6 +32,7 @@ export class TableComponent {
         let response = this.empleados.getEmpleado(this.pageIndex, this.pageSize);
         this.emp = response.content;
         this.dataSource = new MatTableDataSource<Empleado>(this.emp);
+        this.length = this.empleados.empleado.length;
     }
     cambiarEdad(event: Event, id: number) {
         let edad: number = 0;
@@ -44,11 +44,10 @@ export class TableComponent {
     eliminar(id: number) {
         this.empleados.eliminarPorId(id);
         this.emp = this.empleados.empleado
-        this.dataSource = new MatTableDataSource<Empleado>(this.emp);
     }
     cambiosPaginacion(event:any)
     {
-        this.pageIndex = event.pageIndex + 5;
+        this.pageIndex = event.pageIndex;
         this.pageSize = event.pageSize;
         this.actualizarDS();
     }

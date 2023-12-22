@@ -26,7 +26,7 @@
 
       <ng-container matColumnDef="acciones">
         <th mat-header-cell *matHeaderCellDef> Acciones </th>
-        <td mat-cell *matCellDef="let element">
+        <td mat-cell *matCellDef="let element" class="botones">
           <app-modal-edit [info]="element"></app-modal-edit>
           <button id="eliminar" (click)="eliminar(element.id)">Eliminar</button>
           <app-modal-estatus [info]="element"></app-modal-estatus>
