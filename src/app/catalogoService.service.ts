@@ -34,40 +34,6 @@ export class clickEdit
         this.editClicked.next();
     }
 }
-
-@Injectable({
-    providedIn: 'root',
-  })
-export class EmpleadosFiltrados 
-{
-    empleadoFiltrado: Empleado[] = [];
-    search = new Subject<void>();
-    obs = this.search.asObservable();
-    searchBar()
-    {
-        this.search.next();
-    }
-    getEmpleadoFiltrado(page:number, size:number):{
-        content: Empleado[], 
-        pageable: any,
-        totalPages: number,
-        totalElements: number,
-    }
-    {
-        let emp:Empleado[] = this.empleadoFiltrado.slice(page*size, page*size+size);
-        return {
-            "content": emp,
-            "pageable": {
-                "pageNumber": page,
-                "pageSize": size
-            },
-            "totalPages": Math.round(this.empleadoFiltrado.length/size),
-            "totalElements": this.empleadoFiltrado.length,
-        }; 
-    }
-
-}
-
 @Injectable({
     providedIn: 'root',
   })
@@ -76,35 +42,27 @@ export class Empleados
     cambios = new Subject<void>();
     obs = this.cambios.asObservable();
     empleado: Empleado[] = [];
-    getEmpleado(page:number, size:number):{
+    getEmpleado(page:number, size:number, busqueda:string):{
         content: Empleado[], 
         pageable: any,
         totalPages: number,
         totalElements: number,
-        last: boolean, 
-        number: number
     }
     {
-        let emp:Empleado[] = this.empleado.slice(page*size, page*size+size);
+        let emp:Empleado[] = this.empleado;
+        if(busqueda.length !== 0)
+        {
+            emp = this.empleado.filter(empleado => empleado.nombre.toLowerCase().includes(busqueda.toLowerCase()) || empleado.id === parseInt(busqueda) || empleado.cargo.toLowerCase().includes(busqueda));
+        }
         return {
-            "content": emp,
+            "content": emp.slice(page*size, page*size + size),
             "pageable": {
-                "sort":{
-                    "empty":false,
-                    "sorted": true, 
-                    "unsorted": false
-                },
-                "offset": 0,
                 "pageNumber": page,
-                "pageSize": size,
-                "paged": true,
-                "unpaged": false
+                "pageSize": size
             },
             "totalPages": Math.round(this.empleado.length/size),
             "totalElements": this.empleado.length,
-            "last": true,
-            "number": 0,
-        };
+        }; 
     }
     insertarEmpleado(emp:Empleado)
     {
