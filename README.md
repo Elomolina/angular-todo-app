@@ -1,5 +1,3 @@
-# TestGetechnologies
-
 ### Información del proyecto 
 Solución propuesta a la prueba de técnica. 
 Versión de node: 
